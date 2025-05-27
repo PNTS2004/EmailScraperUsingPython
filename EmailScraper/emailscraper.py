@@ -26,3 +26,7 @@ try:
         path=url[:url.rfind('/')+1] if '/' in parts.path else url
 
         print('[%d] Processing %s' %(count,url))
+        try:
+            response=requests.get(url)
+        except (requests.exceptions.MissingSchema, requests.exceptions.ConnectionError):
+            continue
