@@ -34,9 +34,16 @@ try:
         new_emails=set(re.findall(r"[a-z0-9\.\-+_]+@[a-z0-9\.\-+_]+\.[a-z]+"), response.text, re.I))
         emails.update(new_emails)
 
-           if link.startswith('/'):
-               link=base_url+link
-           elif not link.startswith('http'):
-               link=path+link
-           if not link in urls and not link in scraped_urls:
-               urls.append()
+        soup=BeautifulSoup(response.etxt, features='lxml')
+
+        for anchor in soup.finsall("a")
+            link=anchor.attrs['href'] if href in anchor.attrs else ''
+            if link.startswith('/'):
+                link=base_url+link
+            elif not link.startswith('http'):
+                link=path+link
+            if not link in urls and not link in scraped_urls:
+                urls.append()
+
+except KeyboardInterrupt:
+    print("Closing...")
